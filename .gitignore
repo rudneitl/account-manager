@@ -16,4 +16,4 @@
 !/log/.keep
 /tmp
 rubocop.html
-
+*.swp

@@ -11,7 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150819201558) do
+ActiveRecord::Schema.define(version: 20151014224816) do
+
+  create_table "expenses", force: :cascade do |t|
+    t.string   "description"
+    t.string   "status"
+    t.datetime "date_expense"
+    t.decimal  "currency_value"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "incomes", force: :cascade do |t|
+    t.string   "description"
+    t.string   "status"
+    t.datetime "date_income"
+    t.decimal  "currency_value"
+    t.integer  "source_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "incomes", ["source_id"], name: "index_incomes_on_source_id"
+
+  create_table "sources", force: :cascade do |t|
+    t.string   "name"
+    t.string   "status"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
