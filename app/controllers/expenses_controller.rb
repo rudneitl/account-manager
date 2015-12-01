@@ -4,7 +4,7 @@ class ExpensesController < ApplicationController
   # GET /expenses
   # GET /expenses.json
   def index
-    @expenses = Expense.all
+    @expenses = ExpenseDecorator.decorate_collection Expense.all
   end
 
   # GET /expenses/1
@@ -14,7 +14,7 @@ class ExpensesController < ApplicationController
 
   # GET /expenses/new
   def new
-    @expense = Expense.new
+    @expense = ExpenseDecorator.decorate Expense.new
   end
 
   # GET /expenses/1/edit
@@ -62,13 +62,12 @@ class ExpensesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_expense
-      @expense = Expense.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def expense_params
-      params.require(:expense).permit(:description, :status, :date_expense, :currency_value)
-    end
+  def set_expense
+    @expense = ExpenseDecorator.decorate Expense.find(params[:id])
+  end
+
+  def expense_params
+    params.require(:expense).permit(:expense_date, :establishment, :description, :currency_value, :due_date, :status, :source_id, :category_id, :period_id)
+  end
 end

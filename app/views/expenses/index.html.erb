@@ -5,10 +5,13 @@
 <table>
   <thead>
     <tr>
-      <th>Description</th>
-      <th>Status</th>
-      <th>Date expense</th>
+      <th>Establishment</th>
       <th>Currency value</th>
+      <th>Expense Date</th>
+      <th>Category</th>
+      <th>Source</th>
+      <th>Period</th>
+      <th>Status</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,10 +19,13 @@
   <tbody>
     <% @expenses.each do |expense| %>
       <tr>
-        <td><%= expense.description %></td>
-        <td><%= expense.status %></td>
-        <td><%= expense.date_expense %></td>
+        <td><%= expense.establishment %></td>
         <td><%= expense.currency_value %></td>
+        <td><%= expense.expense_date %></td>
+        <td><%= expense.category_name %></td>
+        <td><%= expense.source_name %></td>
+        <td><%= expense.period_name %></td>
+        <td><%= expense.status %></td>
         <td><%= link_to 'Show', expense %></td>
         <td><%= link_to 'Edit', edit_expense_path(expense) %></td>
         <td><%= link_to 'Destroy', expense, method: :delete, data: { confirm: 'Are you sure?' } %></td>

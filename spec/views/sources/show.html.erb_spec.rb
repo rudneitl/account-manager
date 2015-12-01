@@ -5,7 +5,7 @@ RSpec.describe "sources/show", type: :view do
     @source = assign(:source, Source.create!(
       name: "Name",
       status: "active",
-      description: "Description"
+      color: "blue"
     ))
   end
 
@@ -13,6 +13,6 @@ RSpec.describe "sources/show", type: :view do
     render
     expect(rendered).to match(/Name/)
     expect(rendered).to match(/active/)
-    expect(rendered).to match(/Description/)
+    expect(rendered).to match(/blue/)
   end
 end

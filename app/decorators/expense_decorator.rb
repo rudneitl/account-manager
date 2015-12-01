@@ -1,13 +1,19 @@
-class ExpenseDecorator < Draper::Decorator
+class ExpenseDecorator < ApplicationDecorator
+  include Draper::ViewHelpers
   delegate_all
 
-  # Define presentation-specific methods here. Helpers are accessed through
-  # `helpers` (aka `h`). You can override attributes, for example:
-  #
-  #   def created_at
-  #     helpers.content_tag :span, class: 'time' do
-  #       object.created_at.strftime("%a %m/%d/%y")
-  #     end
-  #   end
+  def category_name
+    return category.name unless category.nil?
+    '-'
+  end
 
+  def source_name
+    return source.source.name unless source.source.nil?
+    '-'
+  end
+
+  def period_name
+    return period.name unless period.nil?
+    '-'
+  end
 end

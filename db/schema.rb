@@ -11,33 +11,66 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151014224816) do
+ActiveRecord::Schema.define(version: 20151118211154) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "color"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "expenses", force: :cascade do |t|
+    t.date     "expense_date"
+    t.string   "establishment"
     t.string   "description"
-    t.string   "status"
-    t.datetime "date_expense"
     t.decimal  "currency_value"
+    t.date     "due_date"
+    t.string   "status"
+    t.integer  "source_id"
+    t.integer  "category_id"
+    t.integer  "period_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
+
+  add_index "expenses", ["category_id"], name: "index_expenses_on_category_id"
+  add_index "expenses", ["period_id"], name: "index_expenses_on_period_id"
+  add_index "expenses", ["source_id"], name: "index_expenses_on_source_id"
 
   create_table "incomes", force: :cascade do |t|
+    t.date     "income_date"
     t.string   "description"
-    t.string   "status"
-    t.datetime "date_income"
     t.decimal  "currency_value"
+    t.date     "likely_date"
+    t.string   "status"
     t.integer  "source_id"
+    t.integer  "category_id"
+    t.integer  "period_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
 
+  add_index "incomes", ["category_id"], name: "index_incomes_on_category_id"
+  add_index "incomes", ["period_id"], name: "index_incomes_on_period_id"
   add_index "incomes", ["source_id"], name: "index_incomes_on_source_id"
+
+  create_table "periods", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "status"
+    t.date     "initial_date"
+    t.date     "final_date"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "sources", force: :cascade do |t|
     t.string   "name"
-    t.string   "status"
     t.string   "description"
+    t.string   "color"
+    t.string   "status"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

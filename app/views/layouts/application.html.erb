@@ -1,17 +1,71 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br" class="ls-theme-green">
 <head>
-  <title>CommitCrap</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta charset="utf-8">
+  <title><%= t("title") %></title>
+  <%= stylesheet_link_tag "application" %>
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="ls-topbar">
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+    <div class="ls-notification-topbar">
+      <div data-ls-module="dropdown" class="ls-dropdown ls-user-account">
+        <a href="#" class="ls-ico-user">
+          <span class="ls-name"><%= current_user.email %></span>
+        </a>
+        <nav class="ls-dropdown-nav ls-user-menu">
+          <ul>
+            <li><%= link_to "Alterar senha", edit_user_registration_path %></li>
+            <li><%= link_to "Sair", destroy_user_session_path, :method => :delete %></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
 
-<%= yield %>
+    <span class="ls-show-sidebar ls-ico-menu"></span>
+
+    <h1 class="ls-brand-name">
+      <a class="ls-ico-stats">
+        <%= t("title") %>
+        <small><%= t("version") %></small>
+      </a>
+    </h1>
+  </div>
+
+  <aside class="ls-sidebar">
+    <div data-ls-module="dropdown" class="ls-dropdown ls-user-account ls-active">
+      <a href="#" class="ls-ico-user">
+        <span class="ls-name"><%= current_user.email %></span>
+      </a>
+      <nav class="ls-dropdown-nav ls-user-menu">
+        <ul>
+          <li><%= link_to "Alterar senha", edit_user_registration_path %></li>
+        </ul>
+        <%= link_to "Sair", destroy_user_session_path, :method => :delete, class: "ls-btn-logout" %>
+      </nav>
+    </div>
+
+    <div class="ls-sidebar-inner">
+      <nav class="ls-menu">
+        <%= render 'layouts/menu' %>
+      </nav>
+    </div>
+  </aside>
+
+  <main class="ls-main ">
+    <div class="container-fluid">
+      <br />
+      <%= flash_messages %>
+      <%= yield %>
+    </div>
+  </main>
+
+  <script type='text/javascript'>
+    <%= yield :javascript %>
+  </script>
 
 </body>
 </html>

@@ -6,12 +6,12 @@ RSpec.describe "sources/index", type: :view do
       Source.create!(
         name: "Name",
         status: "active",
-        description: "Description"
+        color: "blue"
       ),
       Source.create!(
         name: "Name",
         status: "inactive",
-        description: "Description"
+        color: "red"
       )
     ])
   end
@@ -19,8 +19,9 @@ RSpec.describe "sources/index", type: :view do
   it "renders a list of sources" do
     render
     assert_select "tr>td", :text => "Name".to_s, :count => 2
+    assert_select "tr>td", :text => "blue".to_s, :count => 1
+    assert_select "tr>td", :text => "red".to_s, :count => 1
     assert_select "tr>td", :text => "active".to_s, :count => 1
     assert_select "tr>td", :text => "inactive".to_s, :count => 1
-    assert_select "tr>td", :text => "Description".to_s, :count => 2
   end
 end

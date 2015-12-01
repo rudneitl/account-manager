@@ -1,0 +1,19 @@
+<h1 class="ls-title-intro ls-ico-users"><%= t('categories.head.show') %></h1>
+
+<p>
+<strong><%= t('categories.labels.name') %>:</strong>
+  <%= @category.name %>
+</p>
+
+<p>
+  <strong><%= t('categories.labels.description') %>:</strong>
+  <%= @category.description %>
+</p>
+
+<p>
+  <strong><%= t('categories.labels.color') %>:</strong>
+  <%= @category.color %>
+</p>
+
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', categories_path %>

@@ -1,8 +1,28 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+<strong>Expense Date:</strong>
+  <%= @expense.expense_date %>
+</p>
+
+<p>
+  <strong>Establishment:</strong>
+  <%= @expense.establishment %>
+</p>
+
+<p>
   <strong>Description:</strong>
   <%= @expense.description %>
+</p>
+
+<p>
+  <strong>Currency value:</strong>
+  <%= @expense.currency_value %>
+</p>
+
+<p>
+  <strong>Due Date:</strong>
+  <%= @expense.due_date %>
 </p>
 
 <p>
@@ -11,13 +31,18 @@
 </p>
 
 <p>
-  <strong>Date expense:</strong>
-  <%= @expense.date_expense %>
+  <strong>Source:</strong>
+  <%= @expense.source_name %>
 </p>
 
 <p>
-  <strong>Currency value:</strong>
-  <%= @expense.currency_value %>
+  <strong>Category:</strong>
+  <%= @expense.category_name %>
+</p>
+
+<p>
+  <strong>Period:</strong>
+  <%= @expense.period_name %>
 </p>
 
 <%= link_to 'Edit', edit_expense_path(@expense) %> |

@@ -1,7 +1,8 @@
 FactoryGirl.define do
   factory :source, class: Source do
-    name "MyString"
-    status "MyString"
-    description "MyString"
+    name "MyName"
+    description "MyDescription"
+    color "MyColor"
+    status "MyStatus"
   end
 end

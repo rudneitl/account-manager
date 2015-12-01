@@ -1,18 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Income Date:</strong>
+  <%= @income.income_date %>
+</p>
+
+<p>
   <strong>Description:</strong>
   <%= @income.description %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @income.status %>
-</p>
-
-<p>
-  <strong>Date income:</strong>
-  <%= @income.date_income %>
 </p>
 
 <p>
@@ -21,9 +16,29 @@
 </p>
 
 <p>
-  <strong>Source:</strong>
-  <%= @income.source %>
+  <strong>Likely Date:</strong>
+  <%= @income.likely_date %>
 </p>
 
-<%= link_to 'Edit', edit_income_path(@income) %> |
-<%= link_to 'Back', incomes_path %>
+<p>
+  <strong>Status:</strong>
+  <%= @income.status %>
+</p>
+
+<p>
+  <strong>Source:</strong>
+  <%= @income.source_name %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @income.category_name %>
+</p>
+
+<p>
+  <strong>Period:</strong>
+  <%= @income.period_name %>
+</p>
+
+<%= link_to 'Edit', edit_period_income_path(@period, @income) %> |
+<%= link_to 'Back', period_incomes_path %>

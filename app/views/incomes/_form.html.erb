@@ -1,4 +1,4 @@
-<%= form_for(@income) do |f| %>
+<%= form_for([@period, @income]) do |f| %>
   <% if @income.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@income.errors.count, "error") %> prohibited this income from being saved:</h2>
@@ -12,25 +12,45 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :income_date %><br>
+    <%= f.date_select :income_date %>
+  </div>
+
+  <div class="field">
     <%= f.label :description %><br>
     <%= f.text_field :description %>
   </div>
+
+  <div class="field">
+    <%= f.label :currency_value %><br>
+    <%= f.number_field :currency_value %>
+  </div>
+
   <div class="field">
     <%= f.label :status %><br>
     <%= f.select(:status, Income.statuses, {prompt: true}) %>
   </div>
+
   <div class="field">
-    <%= f.label :date_income %><br>
-    <%= f.text_field :date_income %>
+    <%= f.label :likely_date %><br>
+    <%= f.date_select :likely_date %>
   </div>
-  <div class="field">
-    <%= f.label :currency_value %><br>
-    <%= f.text_field :currency_value %>
-  </div>
+
   <div class="field">
     <%= f.label :source_id %><br>
-    <%= f.text_field :source_id %>
+    <%= f.collection_select(:source_id, Source.all, :id, :name, {prompt: true}) %>
   </div>
+
+  <div class="field">
+    <%= f.label :category_id %><br>
+    <%= f.collection_select(:category_id, Category.all, :id, :name, {prompt: true}) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :period_id %><br>
+    <%= f.collection_select(:period_id, Period.all, :id, :name, {prompt: true}) %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

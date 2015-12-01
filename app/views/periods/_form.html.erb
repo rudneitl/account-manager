@@ -1,0 +1,42 @@
+<%= form_for(@period) do |f| %>
+  <% if @period.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@period.errors.count, "error") %> prohibited this period from being saved:</h2>
+
+      <ul>
+      <% @period.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :initial_date %><br>
+    <%= f.date_select :initial_date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :final_date %><br>
+    <%= f.date_select :final_date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.select(:status, Period.statuses, {prompt: true}) %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

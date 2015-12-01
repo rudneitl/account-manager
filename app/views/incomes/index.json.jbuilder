@@ -1,4 +1,4 @@
 json.array!(@incomes) do |income|
-  json.extract! income, :id, :description, :status, :date_income, :currency_value, :source_id
+  json.extract! income, :id, ::date_income, description, :currency_value, :likely_date, :status, :source, :category, :period
   json.url income_url(income, format: :json)
 end

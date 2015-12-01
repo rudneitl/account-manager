@@ -1,0 +1,5 @@
+rvm 2.0.0@murphy --create
+
+if ! command -v bundle ; then
+  gem install bundler
+fi

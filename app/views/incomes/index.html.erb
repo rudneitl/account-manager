@@ -6,10 +6,12 @@
   <thead>
     <tr>
       <th>Description</th>
-      <th>Status</th>
-      <th>Date income</th>
-      <th>Currency value</th>
+      <th>Income Date</th>
+      <th>Category</th>
       <th>Source</th>
+      <th>Period</th>
+      <th>Status</th>
+      <th>Currency value</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,13 +20,15 @@
     <% @incomes.each do |income| %>
       <tr>
         <td><%= income.description %></td>
+        <td><%= income.income_date %></td>
+        <td><%= income.category_name %></td>
+        <td><%= income.source_name %></td>
+        <td><%= income.period_name %></td>
         <td><%= income.status %></td>
-        <td><%= income.date_income %></td>
-        <td><%= income.currency_value %></td>
-        <td><%= income.source %></td>
-        <td><%= link_to 'Show', income %></td>
-        <td><%= link_to 'Edit', edit_income_path(income) %></td>
-        <td><%= link_to 'Destroy', income, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= income.formated_currency_value %></td>
+        <td><%= link_to 'Show', period_income_path(@period, income) %></td>
+        <td><%= link_to 'Edit', edit_period_income_path(@period, income) %></td>
+        <td><%= link_to 'Destroy', period_income_path(@period, income), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +36,4 @@
 
 <br>
 
-<%= link_to 'New Income', new_income_path %>
+<%= link_to 'New Income', new_period_income_path %>

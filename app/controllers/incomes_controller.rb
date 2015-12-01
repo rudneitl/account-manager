@@ -1,10 +1,11 @@
 class IncomesController < ApplicationController
+  before_action :set_period
   before_action :set_income, only: [:show, :edit, :update, :destroy]
 
   # GET /incomes
   # GET /incomes.json
   def index
-    @incomes = Income.all
+    @incomes = IncomeDecorator.decorate_collection Income.where(period: @period).all
   end
 
   # GET /incomes/1
@@ -14,7 +15,7 @@ class IncomesController < ApplicationController
 
   # GET /incomes/new
   def new
-    @income = Income.new
+    @income = IncomeDecorator.decorate Income.new
   end
 
   # GET /incomes/1/edit
@@ -25,10 +26,11 @@ class IncomesController < ApplicationController
   # POST /incomes.json
   def create
     @income = Income.new(income_params)
+    @income.period = @period
 
     respond_to do |format|
       if @income.save
-        format.html { redirect_to @income, notice: 'Income was successfully created.' }
+        format.html { redirect_to [@period, @income], notice: 'Income was successfully created.' }
         format.json { render :show, status: :created, location: @income }
       else
         format.html { render :new }
@@ -62,13 +64,19 @@ class IncomesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_income
-      @income = Income.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def income_params
-      params.require(:income).permit(:description, :status, :date_income, :currency_value, :source_id)
-    end
+  def set_income
+    @income = IncomeDecorator.decorate Income.find(params[:id])
+  end
+
+  def set_period
+    @period = Period.find(params[:period_id])
+  rescue
+    not_found('Tournament not found')
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def income_params
+    params.require(:income).permit(:income_date, :description, :currency_value, :likely_date, :status, :source_id, :category_id)
+  end
 end

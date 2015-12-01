@@ -1,6 +1,20 @@
 "pt-BR":
-  title: "Bolão 2015"
+  title: "Teste"
   version: "Beta 0.8"
+  categories:
+    head:
+      title: "Gerenciamento de categorias"
+      edit: "Edição de categoria"
+      show: "Exibição de categoria"
+      new: "Cadastro de categoria"
+    labels:
+      name: "Nome"
+      description: "Descrição"
+      color: "Cor"
+    actions:
+      save: "Salvar registro"
+
+
   match:
     head_title: "Partidas"
     head_title_users: "Palpites dos participantes"
