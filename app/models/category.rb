@@ -4,7 +4,7 @@ class Category < ActiveRecord::Base
   has_many :incomes
 
   # colors
-  BLUE= 'blue'
+  BLUE = 'blue'
   RED = 'red'
   GREEN = 'green'
   string_enum color: [BLUE, RED, GREEN]

@@ -11,4 +11,3 @@ module StringEnum
     end
   end
 end
-

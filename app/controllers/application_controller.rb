@@ -8,12 +8,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def not_found(message = 'Not found')
-    raise ActionController::RoutingError.new(message)
+    fail ActionController::RoutingError.new(message)
   end
 
   def check_admin_role
     unless current_user.admin?
-      raise ActionController::RoutingError.new('not allowed')
+      fail ActionController::RoutingError.new('not allowed')
     end
   end
 

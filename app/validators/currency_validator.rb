@@ -14,4 +14,3 @@ class CurrencyValidator < ActiveModel::Validator
     record.errors.add(:currency_value) if record.currency_value == 0
   end
 end
-

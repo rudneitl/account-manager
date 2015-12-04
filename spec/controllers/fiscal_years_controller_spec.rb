@@ -19,141 +19,139 @@ require 'rails_helper'
 # that an instance is receiving a specific message.
 
 RSpec.describe FiscalYearsController, type: :controller do
-
   # This should return the minimal set of attributes required to create a valid
   # FiscalYear. As you add validations to FiscalYear, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
+  let(:valid_attributes) do
+    skip('Add a hash of attributes valid for your model')
+  end
 
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
+  let(:invalid_attributes) do
+    skip('Add a hash of attributes invalid for your model')
+  end
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # FiscalYearsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
-  describe "GET #index" do
-    it "assigns all fiscal_years as @fiscal_years" do
+  describe 'GET #index' do
+    it 'assigns all fiscal_years as @fiscal_years' do
       fiscal_year = FiscalYear.create! valid_attributes
       get :index, {}, valid_session
       expect(assigns(:fiscal_years)).to eq([fiscal_year])
     end
   end
 
-  describe "GET #show" do
-    it "assigns the requested fiscal_year as @fiscal_year" do
+  describe 'GET #show' do
+    it 'assigns the requested fiscal_year as @fiscal_year' do
       fiscal_year = FiscalYear.create! valid_attributes
-      get :show, {:id => fiscal_year.to_param}, valid_session
+      get :show, { id: fiscal_year.to_param }, valid_session
       expect(assigns(:fiscal_year)).to eq(fiscal_year)
     end
   end
 
-  describe "GET #new" do
-    it "assigns a new fiscal_year as @fiscal_year" do
+  describe 'GET #new' do
+    it 'assigns a new fiscal_year as @fiscal_year' do
       get :new, {}, valid_session
       expect(assigns(:fiscal_year)).to be_a_new(FiscalYear)
     end
   end
 
-  describe "GET #edit" do
-    it "assigns the requested fiscal_year as @fiscal_year" do
+  describe 'GET #edit' do
+    it 'assigns the requested fiscal_year as @fiscal_year' do
       fiscal_year = FiscalYear.create! valid_attributes
-      get :edit, {:id => fiscal_year.to_param}, valid_session
+      get :edit, { id: fiscal_year.to_param }, valid_session
       expect(assigns(:fiscal_year)).to eq(fiscal_year)
     end
   end
 
-  describe "POST #create" do
-    context "with valid params" do
-      it "creates a new FiscalYear" do
-        expect {
-          post :create, {:fiscal_year => valid_attributes}, valid_session
-        }.to change(FiscalYear, :count).by(1)
+  describe 'POST #create' do
+    context 'with valid params' do
+      it 'creates a new FiscalYear' do
+        expect do
+          post :create, { fiscal_year: valid_attributes }, valid_session
+        end.to change(FiscalYear, :count).by(1)
       end
 
-      it "assigns a newly created fiscal_year as @fiscal_year" do
-        post :create, {:fiscal_year => valid_attributes}, valid_session
+      it 'assigns a newly created fiscal_year as @fiscal_year' do
+        post :create, { fiscal_year: valid_attributes }, valid_session
         expect(assigns(:fiscal_year)).to be_a(FiscalYear)
         expect(assigns(:fiscal_year)).to be_persisted
       end
 
-      it "redirects to the created fiscal_year" do
-        post :create, {:fiscal_year => valid_attributes}, valid_session
+      it 'redirects to the created fiscal_year' do
+        post :create, { fiscal_year: valid_attributes }, valid_session
         expect(response).to redirect_to(FiscalYear.last)
       end
     end
 
-    context "with invalid params" do
-      it "assigns a newly created but unsaved fiscal_year as @fiscal_year" do
-        post :create, {:fiscal_year => invalid_attributes}, valid_session
+    context 'with invalid params' do
+      it 'assigns a newly created but unsaved fiscal_year as @fiscal_year' do
+        post :create, { fiscal_year: invalid_attributes }, valid_session
         expect(assigns(:fiscal_year)).to be_a_new(FiscalYear)
       end
 
       it "re-renders the 'new' template" do
-        post :create, {:fiscal_year => invalid_attributes}, valid_session
-        expect(response).to render_template("new")
+        post :create, { fiscal_year: invalid_attributes }, valid_session
+        expect(response).to render_template('new')
       end
     end
   end
 
-  describe "PUT #update" do
-    context "with valid params" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
-
-      it "updates the requested fiscal_year" do
-        fiscal_year = FiscalYear.create! valid_attributes
-        put :update, {:id => fiscal_year.to_param, :fiscal_year => new_attributes}, valid_session
-        fiscal_year.reload
-        skip("Add assertions for updated state")
+  describe 'PUT #update' do
+    context 'with valid params' do
+      let(:new_attributes) do
+        skip('Add a hash of attributes valid for your model')
       end
 
-      it "assigns the requested fiscal_year as @fiscal_year" do
+      it 'updates the requested fiscal_year' do
         fiscal_year = FiscalYear.create! valid_attributes
-        put :update, {:id => fiscal_year.to_param, :fiscal_year => valid_attributes}, valid_session
+        put :update, { id: fiscal_year.to_param, fiscal_year: new_attributes }, valid_session
+        fiscal_year.reload
+        skip('Add assertions for updated state')
+      end
+
+      it 'assigns the requested fiscal_year as @fiscal_year' do
+        fiscal_year = FiscalYear.create! valid_attributes
+        put :update, { id: fiscal_year.to_param, fiscal_year: valid_attributes }, valid_session
         expect(assigns(:fiscal_year)).to eq(fiscal_year)
       end
 
-      it "redirects to the fiscal_year" do
+      it 'redirects to the fiscal_year' do
         fiscal_year = FiscalYear.create! valid_attributes
-        put :update, {:id => fiscal_year.to_param, :fiscal_year => valid_attributes}, valid_session
+        put :update, { id: fiscal_year.to_param, fiscal_year: valid_attributes }, valid_session
         expect(response).to redirect_to(fiscal_year)
       end
     end
 
-    context "with invalid params" do
-      it "assigns the fiscal_year as @fiscal_year" do
+    context 'with invalid params' do
+      it 'assigns the fiscal_year as @fiscal_year' do
         fiscal_year = FiscalYear.create! valid_attributes
-        put :update, {:id => fiscal_year.to_param, :fiscal_year => invalid_attributes}, valid_session
+        put :update, { id: fiscal_year.to_param, fiscal_year: invalid_attributes }, valid_session
         expect(assigns(:fiscal_year)).to eq(fiscal_year)
       end
 
       it "re-renders the 'edit' template" do
         fiscal_year = FiscalYear.create! valid_attributes
-        put :update, {:id => fiscal_year.to_param, :fiscal_year => invalid_attributes}, valid_session
-        expect(response).to render_template("edit")
+        put :update, { id: fiscal_year.to_param, fiscal_year: invalid_attributes }, valid_session
+        expect(response).to render_template('edit')
       end
     end
   end
 
-  describe "DELETE #destroy" do
-    it "destroys the requested fiscal_year" do
+  describe 'DELETE #destroy' do
+    it 'destroys the requested fiscal_year' do
       fiscal_year = FiscalYear.create! valid_attributes
-      expect {
-        delete :destroy, {:id => fiscal_year.to_param}, valid_session
-      }.to change(FiscalYear, :count).by(-1)
+      expect do
+        delete :destroy, { id: fiscal_year.to_param }, valid_session
+      end.to change(FiscalYear, :count).by(-1)
     end
 
-    it "redirects to the fiscal_years list" do
+    it 'redirects to the fiscal_years list' do
       fiscal_year = FiscalYear.create! valid_attributes
-      delete :destroy, {:id => fiscal_year.to_param}, valid_session
+      delete :destroy, { id: fiscal_year.to_param }, valid_session
       expect(response).to redirect_to(fiscal_years_url)
     end
   end
-
 end

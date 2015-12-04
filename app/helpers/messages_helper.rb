@@ -12,7 +12,7 @@ module MessagesHelper
         Array(message).each do |msg|
           concat(
             content_tag(:div, class: "ls-alert-#{type} ls-dismissable") do
-              concat(content_tag(:span, '&times;'.html_safe, class: 'ls-dismiss',  'data-ls-module' => 'dismiss'))
+              concat(content_tag(:span, '&times;'.html_safe, class: 'ls-dismiss', 'data-ls-module' => 'dismiss'))
               concat(
                 content_tag(:p) do
                   content_tag(:span, msg, class: 'ls-ico-chevron-right')

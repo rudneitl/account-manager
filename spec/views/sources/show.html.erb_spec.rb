@@ -1,15 +1,15 @@
 require 'rails_helper'
 
-RSpec.describe "sources/show", type: :view do
+RSpec.describe 'sources/show', type: :view do
   before(:each) do
     @source = assign(:source, Source.create!(
-      name: "Name",
-      status: "active",
-      color: "blue"
+                                name:   'Name',
+                                status: 'active',
+                                color:  'blue'
     ))
   end
 
-  it "renders attributes in <p>" do
+  it 'renders attributes in <p>' do
     render
     expect(rendered).to match(/Name/)
     expect(rendered).to match(/active/)
