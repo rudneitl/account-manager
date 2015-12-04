@@ -1,6 +1,15 @@
 "pt-BR":
   title: "Teste"
   version: "Beta 0.8"
+  general:
+    labels:
+      actions: "Acões"
+      show: "Exibir"
+      edit: "Editar"
+      back: "Voltar"
+      delete:
+        title: "Excluir"
+        message: "Deseja realmente excluir o registro?"
   categories:
     head:
       title: "Gerenciamento de categorias"
@@ -11,7 +20,22 @@
       name: "Nome"
       description: "Descrição"
       color: "Cor"
+      status: "Status"
     actions:
+      new: "Nova categoria"
+      save: "Salvar registro"
+  fiscal_years:
+    head:
+      title: "Gerenciamento de anos fiscais"
+      edit: "Edição de ano fiscal"
+      show: "Exibição de ano fiscal"
+      new: "Cadastro de ano fiscal"
+    labels:
+      name: "Nome"
+      year: "Ano"
+      status: "Status"
+    actions:
+      new: "Novo ano fiscal"
       save: "Salvar registro"
 
 

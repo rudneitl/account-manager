@@ -1,0 +1,21 @@
+<h1 class="ls-title-intro ls-ico-users"><%= t('fiscal_years.head.show') %></h1>
+
+<p>
+<strong><%= t('fiscal_years.labels.name') %>:</strong>
+  <%= @fiscal_year.name %>
+</p>
+
+<p>
+  <strong><%= t('fiscal_years.labels.year') %>:</strong>
+  <%= @fiscal_year.year %>
+</p>
+
+<p>
+  <strong><%= t('fiscal_years.labels.status') %>:</strong>
+  <%= @fiscal_year.status %>
+</p>
+
+<div class="actions">
+  <%= link_to t('general.labels.edit'), edit_fiscal_year_path(@fiscal_year), class: 'ls-btn' %>
+  <%= link_to t('general.labels.back'), fiscal_years_path, class: 'ls-btn' %>
+</div>

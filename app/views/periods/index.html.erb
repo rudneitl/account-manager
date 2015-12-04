@@ -21,7 +21,7 @@
         <td><%= period.initial_date %></td>
         <td><%= period.final_date %></td>
         <td><%= link_to 'Show', period %></td>
-        <td><%= link_to 'Edit', edit_period_path(period) %></td>
+        <td><%= link_to t('general.labels.edit'), edit_period_path(period) %></td>
         <td><%= link_to 'Destroy', period, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <td><%= link_to 'Incomes', period_incomes_path(period) %></td>
       </tr>
@@ -31,4 +31,4 @@
 
 <br>
 
-<%= link_to 'New Period', new_period_path %>
+<%= link_to 'New Period', new_fiscal_year_period_path(@fiscal_year) %>

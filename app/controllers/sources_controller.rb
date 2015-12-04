@@ -62,13 +62,12 @@ class SourcesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_source
-      @source = Source.find(params[:id]).decorate
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def source_params
-      params.require(:source).permit(:name, :status, :description, :color)
-    end
+  def set_source
+    @source = Source.find(params[:id]).decorate
+  end
+
+  def source_params
+    params.require(:source).permit(:name, :status, :description, :color)
+  end
 end

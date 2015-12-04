@@ -22,6 +22,27 @@ module MessagesHelper
           )
         end
       end
+    end unless flash.empty?
+  end
+
+  def class_error(model, attribute)
+    return unless model && model.errors
+    'ls-error' if model.errors.key? attribute.to_sym
+  end
+
+  def show_message_error(model, key)
+    build_tag_message_error model, key if model.errors.key? key.to_sym
+  end
+
+  def build_tag_message_error(model, key)
+    content_tag(:div) do
+      model.errors[key.to_sym].all? do |x|
+        concat(
+          content_tag(:p, class: 'ls-help-message ls-no-margin') do
+            concat(content_tag(:small, x))
+          end
+        )
+      end
     end
   end
 end

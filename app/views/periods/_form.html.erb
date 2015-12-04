@@ -32,6 +32,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :fiscal_year_id %><br>
+    <%= f.collection_select(:fiscal_year_id, FiscalYear.all, :id, :name, {prompt: true}) %>
+  </div>
+
+  <div class="field">
     <%= f.label :status %><br>
     <%= f.select(:status, Period.statuses, {prompt: true}) %>
   </div>

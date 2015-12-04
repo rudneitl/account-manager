@@ -27,7 +27,7 @@
         <td><%= income.status %></td>
         <td><%= income.formated_currency_value %></td>
         <td><%= link_to 'Show', period_income_path(@period, income) %></td>
-        <td><%= link_to 'Edit', edit_period_income_path(@period, income) %></td>
+        <td><%= link_to t('general.labels.edit'), edit_period_income_path(@period, income) %></td>
         <td><%= link_to 'Destroy', period_income_path(@period, income), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

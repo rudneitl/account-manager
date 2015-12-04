@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151118211154) do
+ActiveRecord::Schema.define(version: 20151201203806) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -39,6 +39,14 @@ ActiveRecord::Schema.define(version: 20151118211154) do
   add_index "expenses", ["period_id"], name: "index_expenses_on_period_id"
   add_index "expenses", ["source_id"], name: "index_expenses_on_source_id"
 
+  create_table "fiscal_years", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "year"
+    t.string   "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "incomes", force: :cascade do |t|
     t.date     "income_date"
     t.string   "description"
@@ -62,8 +70,9 @@ ActiveRecord::Schema.define(version: 20151118211154) do
     t.string   "status"
     t.date     "initial_date"
     t.date     "final_date"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "fiscal_year_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "sources", force: :cascade do |t|

@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   resources :categories
   resources :sources
 
-  resources :periods do
-    resources :incomes
-    resources :expenses
+  resources :fiscal_years, shallow: true do
+    resources :periods do
+      resources :incomes
+      resources :expenses
+    end
   end
 end

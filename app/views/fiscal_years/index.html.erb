@@ -1,0 +1,35 @@
+<h1 class="ls-title-intro ls-ico-users"><%= t('fiscal_years.head.title') %></h1>
+
+<%= link_to t('fiscal_years.actions.new'), new_fiscal_year_path, class: 'ls-btn-primary' %>
+
+<table class="ls-table ls-table-striped ls-bg-header">
+  <thead>
+    <tr>
+      <th><%= t('fiscal_years.labels.name') %></th>
+      <th><%= t('fiscal_years.labels.year') %></th>
+      <th><%= t('fiscal_years.labels.status') %></th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fiscal_years.each do |fiscal_year| %>
+      <tr>
+        <td><%= fiscal_year.name %></td>
+        <td><%= fiscal_year.year %></td>
+        <td><%= fiscal_year.status %></td>
+        <td>
+          <%= link_to 'Periodos', fiscal_year_periods_path(fiscal_year), class: 'ls-btn-primary' %>
+          <div data-ls-module="dropdown" class="ls-dropdown">
+            <a href="#" class="ls-btn"><%= t('general.labels.actions') %></a>
+            <ul class="ls-dropdown-nav">
+              <li><%= link_to t('general.labels.show'), fiscal_year %></li>
+              <li><%= link_to t('general.labels.edit'), edit_fiscal_year_path(fiscal_year) %></li>
+              <li><%= link_to t('general.labels.delete.title'), fiscal_year, method: :delete, data: { confirm: t('general.labels.delete.message') }, class: "ls-color-danger ls-divider" %></li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

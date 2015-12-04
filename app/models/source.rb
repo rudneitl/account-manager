@@ -11,7 +11,8 @@ class Source < ActiveRecord::Base
   # colors
   BLUE = 'blue'
   RED  = 'red'
-  string_enum color: [BLUE, RED]
+  GREEN  = 'green'
+  string_enum color: [BLUE, RED, GREEN]
 
   validates :name,
             :status,

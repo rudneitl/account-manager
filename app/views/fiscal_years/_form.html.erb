@@ -1,0 +1,39 @@
+<%= form_for(@fiscal_year) do |f| %>
+  <div class="ls-label col-lg-4 col-sm-8 <%= class_error @fiscal_year, :name %>">
+    <label class="ls-no-margin-right">
+      <b class="ls-label-text"> <%= t('fiscal_years.labels.name') %> </b>
+      <div class="ls-label ls-no-padding-left <%= class_error @fiscal_year, :name %>">
+        <%= f.text_field :name %>
+        <%= show_message_error @fiscal_year, :name %>
+      </div>
+    </label>
+  </div>
+
+  <div class="ls-label col-lg-4 col-sm-8 <%= class_error @fiscal_year, :year %>">
+    <label class="ls-no-margin-right">
+      <b class="ls-label-text"> <%= t('fiscal_years.labels.year') %> </b>
+      <div class="ls-label ls-no-padding-left <%= class_error @fiscal_year, :year %>">
+        <%= f.number_field :year %>
+        <%= show_message_error @fiscal_year, :year %>
+      </div>
+    </label>
+  </div>
+
+  <div class="ls-label col-lg-4 col-sm-8 <%= class_error @fiscal_year, :status %>">
+    <label class="ls-no-margin-right">
+      <b class="ls-label-text"> <%= t('fiscal_years.labels.status') %> </b>
+      <div class="ls-label ls-no-padding-left <%= class_error @fiscal_year, :status %>">
+        <div class="ls-custom-select">
+          <%= f.select(:status, FiscalYear.statuses, {prompt: true}) %>
+        </div>
+        <%= show_message_error @fiscal_year, :status %>
+      </div>
+    </label>
+  </div>
+
+  <div class="actions">
+    <%= f.submit t('fiscal_years.actions.save'), class: 'ls-btn-primary' %>
+    <%= link_to 'Show', @fiscal_year, class: 'ls-btn' unless @fiscal_year.id.nil? %>
+    <%= link_to t('general.labels.back'), fiscal_years_path, class: 'ls-btn' %>
+  </div>
+<% end %>

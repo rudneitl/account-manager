@@ -1,6 +1,8 @@
 class Period < ActiveRecord::Base
   include StringEnum
 
+  belongs_to :fiscal_year
+
   has_many :incomes
   has_many :expenses
 

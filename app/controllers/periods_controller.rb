@@ -1,10 +1,11 @@
 class PeriodsController < ApplicationController
+  before_action :set_fiscal_year, only: [:index, :create]
   before_action :set_period, only: [:show, :edit, :update, :destroy]
 
   # GET /periods
   # GET /periods.json
   def index
-    @periods = Period.all
+    @periods = PeriodDecorator.decorate_collection Period.where(fiscal_year: @fiscal_year).all
   end
 
   # GET /periods/1
@@ -14,7 +15,7 @@ class PeriodsController < ApplicationController
 
   # GET /periods/new
   def new
-    @period = Period.new
+    @period = PeriodDecorator.decorate Period.new
   end
 
   # GET /periods/1/edit
@@ -62,13 +63,16 @@ class PeriodsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_period
-      @period = Period.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def period_params
-      params.require(:period).permit(:name, :description, :status, :initial_date, :final_date)
-    end
+  def set_period
+    @period = Period.find(params[:id])
+  end
+
+  def set_fiscal_year
+    @fiscal_year = FiscalYear.find(params[:fiscal_year_id])
+  end
+
+  def period_params
+    params.require(:period).permit(:name, :description, :status, :initial_date, :final_date, :fiscal_year_id)
+  end
 end

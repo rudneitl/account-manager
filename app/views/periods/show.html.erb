@@ -25,5 +25,5 @@
   <%= @period.status %>
 </p>
 
-<%= link_to 'Edit', edit_period_path(@period) %> |
-<%= link_to 'Back', periods_path %>
+<%= link_to t('general.labels.edit'), edit_period_path(@period) %> |
+<%= link_to t('general.labels.back'), fiscal_year_periods_path(@period.fiscal_year) %>

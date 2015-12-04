@@ -3,4 +3,4 @@
 <%= render 'form' %>
 
 <%= link_to 'Show', @period %> |
-<%= link_to 'Back', periods_path %>
+<%= link_to t('general.labels.back'), fiscal_year_periods_path(@period.fiscal_year) %>

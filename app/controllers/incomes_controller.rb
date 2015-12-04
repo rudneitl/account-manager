@@ -75,7 +75,6 @@ class IncomesController < ApplicationController
     not_found('Tournament not found')
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def income_params
     params.require(:income).permit(:income_date, :description, :currency_value, :likely_date, :status, :source_id, :category_id)
   end

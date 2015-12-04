@@ -1,11 +1,13 @@
 <h1 class="ls-title-intro ls-ico-users"><%= t('categories.head.title') %></h1>
 
+<%= link_to t('categories.actions.new'), new_category_path, class: 'ls-btn-primary' %>
+
 <table class="ls-table ls-table-striped ls-bg-header">
   <thead>
     <tr>
       <th><%= t('categories.labels.name') %></th>
       <th><%= t('categories.labels.color') %></th>
-      <th colspan="3"></th>
+      <th>&nbsp;</th>
     </tr>
   </thead>
 
@@ -14,14 +16,17 @@
       <tr>
         <td><%= category.name %></td>
         <td><%= category.color %></td>
-        <td><%= link_to 'Show', category %></td>
-        <td><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <div data-ls-module="dropdown" class="ls-dropdown">
+            <a href="#" class="ls-btn"><%= t('general.labels.actions') %></a>
+            <ul class="ls-dropdown-nav">
+              <li><%= link_to t('general.labels.show'), category %></li>
+              <li><%= link_to t('general.labels.edit'), edit_category_path(category) %></li>
+              <li><%= link_to t('general.labels.delete.title'), category, method: :delete, data: { confirm: t('general.labels.delete.message') }, class: "ls-color-danger ls-divider" %></li>
+            </ul>
+          </div>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Category', new_category_path %>
