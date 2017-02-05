@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.2'
+gem 'rails', '4.2.6'
 gem 'sqlite3'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -12,14 +12,17 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'draper', '~> 1.4'
 
+group :development do
+  gem 'web-console', '~> 2.0'
+end
+
 group :development, :test do
   gem 'byebug'
-  gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'pry'
-  gem 'rspec-rails', '~> 3.2.1'
+  gem 'rspec-rails', '~> 3.5.0'
   gem 'factory_girl_rails'
-  gem 'rspec-its',             '~> 1.0.1'
+  gem 'rspec-its',             '~> 1.2.0'
   gem 'rspec_junit_formatter', '~> 0.2.0'
   gem 'simplecov', require: false
   gem 'simplecov-rcov',        '~> 0.2.3'
